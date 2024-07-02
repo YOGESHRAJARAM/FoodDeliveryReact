@@ -1,6 +1,8 @@
 import React from 'react'
 import './Footer.css'
 import {assets} from '../../assets/assets'
+import {Link} from 'react-router-dom'
+
 
 const Footer = () => {
   return (
@@ -19,22 +21,23 @@ const Footer = () => {
                 <h2>Cherry Land</h2>
                 <ul>
                     <li>Home</li>
-                    <li>About Us</li>
+                    <li><Link to={"/aboutus"}>About Us</Link></li>
                     <li>Delivery</li>
-                    <li>Privacy policy</li>
+                    <li><Link to={"/PrivacyPolicy"}>PrivacyPolicy</Link></li>
+                    <li><Link to={"/policy"}>cancellation and refund policy</Link></li>
                 </ul>
 
             </div>
             <div className="footer-content-right">
-                <h2>Get In Touch</h2>
+                <h2>Contact Us</h2>
                 <ul>
                     <li>+9090909090</li>
-                    <li>summa@tomato.com</li>
+                    <li><a href="mailto:cherrylandtec@gmail.com">cherrylandtec@gmail.com</a></li>
                 </ul>
             </div>
         </div>
         <hr/>
-        <p className='footer-copyright'> Copyright 2024 @ Cherryland.com - All Right Reserved</p>
+        <p className='footer-copyright'> Copyright 2024 @ Cherryland.com - All Right Reserved <Link to={"/terms"}>Terms and Condition</Link></p>
     </div>
   )
 }
