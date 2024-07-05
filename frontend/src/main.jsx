@@ -9,6 +9,7 @@ import Footer from "./components/footer/Footer.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <StoreContextProvider>
+      
       <App />
       <Footer/>
     </StoreContextProvider>

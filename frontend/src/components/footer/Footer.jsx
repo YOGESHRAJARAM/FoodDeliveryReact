@@ -31,7 +31,7 @@ const Footer = () => {
             <div className="footer-content-right">
                 <h2>Contact Us</h2>
                 <ul>
-                    <li>+9090909090</li>
+                    <li>+91 9080194557</li>
                     <li><a href="mailto:cherrylandtec@gmail.com">cherrylandtec@gmail.com</a></li>
                 </ul>
             </div>

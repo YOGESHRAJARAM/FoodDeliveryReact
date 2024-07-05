@@ -5,6 +5,7 @@
   box-sizing: border-box;
   font-family: Outfit;
   scroll-behavior: smooth;
+
 }
 body{
   min-height: 100vh;
@@ -13,7 +14,7 @@ a{
   text-decoration: none;
   color: inherit;
 }
-.app{
+.App{
   margin: auto;
   width: 80%;
 }
