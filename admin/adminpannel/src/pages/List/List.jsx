@@ -49,7 +49,7 @@ useEffect(()=>{fetchList()},[])
             <img  src={`${url}/images/`+item.image} alt=''/>
             <p>{item.name}</p>
             <p>{item.category}</p>
-            <p>${item.price}</p>
+            <p>Rs{item.price}</p>
             <p onClick={()=>{removeitem(item._id)}} className='cursor'>x</p>
           </div>)
         })}
