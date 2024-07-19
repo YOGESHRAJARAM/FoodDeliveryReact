@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import './PlaceOrder.css'
 import { StoreContext } from '../../context/StoreContext'
+import { useNavigate } from 'react-router-dom'
 const PlaceOrder = () => {
    const{getTotalCartAmount,token,food_list,cartItems,url}=useContext(StoreContext)
    const [data,setData] = useState({
@@ -14,6 +15,7 @@ const PlaceOrder = () => {
     country:"",
     phone:""
    })
+   const navigate = useNavigate();
 
    const onChangeHandler = (event)=>{
       const name = event.target.name;
@@ -24,10 +26,20 @@ const PlaceOrder = () => {
   //     console.log(data)
   //  },[data])
 
+  useEffect(()=>{
+    if(!token){
+      navigate("/cart")
+    }
+    else if(getTotalCartAmount() === 0){
+      navigate("/cart")
+    }
+  },[token])
+
 
 
   const placeOrder = async (event)=>{
        event.preventDefault();
+      
        let orderItems = [];
        food_list.map((item)=>{
         if(cartItems[item._id]>0){
@@ -36,7 +48,7 @@ const PlaceOrder = () => {
           orderItems.push(itemInfo)
         }
        })
-       console.log(orderItems);
+      //  console.log(orderItems);
       //  console.log(getTotalCartAmount()+2)
        let orderData ={
          address:data,
@@ -64,13 +76,15 @@ const PlaceOrder = () => {
           "Authorization": `Bearer ${token}`,
         },
       });
+      
       const order = await response.json()
       console.log(order);
+      
       var options = {
         "key": "rzp_test_RJom3ko4MEzDV4", // Enter the Key ID generated from the Dashboard
         amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
         currency,
-        "name": "Acme Corp",
+        "name": "CherryLand",
         "description": "Test Transaction",
         "image": "https://example.com/your_logo",
         "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
@@ -90,6 +104,13 @@ const PlaceOrder = () => {
            });
            const jsonRes = await validateres.json();
            console.log(jsonRes);
+           if(jsonRes.msg == "success"){
+            alert("Payment successfull"),
+            navigate("/myorder")
+          }else{
+            alert("failed")
+            navigate("/")
+          }
         },
         "prefill": {
             "name": "Yogesh",
@@ -114,10 +135,10 @@ const PlaceOrder = () => {
             alert(response.error.metadata.payment_id);
     });
     rzp1.open();
-  
+   
+   
 
   };
-
   return (
     <>
     <form onSubmit={placeOrder} className='place-order' >
@@ -160,7 +181,7 @@ const PlaceOrder = () => {
               </div>
           
             </div>
-            <button type='submit'>PROCESS TO PAYMENT</button>
+            <button  type='submit'>PROCESS TO PAYMENT</button>
           </div>
 
       </div>

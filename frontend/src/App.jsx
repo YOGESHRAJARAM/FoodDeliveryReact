@@ -9,6 +9,8 @@ import Policy from './pages/policyPage/Policy'
 import Privacy from './pages/policyPage/Privacy'
 import Terms from './pages/policyPage/Terms'
 import Aboutus from './pages/policyPage/Aboutus'
+import VerifyPage from './pages/Verifypage/VerifyPage'
+import MyOrders from './pages/MyOrders/MyOrders'
 
 
 
@@ -27,7 +29,8 @@ const App = () => {
          <Route path='/PrivacyPolicy' element={<Privacy/>}></Route>
          <Route path='/terms' element={<Terms/>}></Route>
          <Route path='/aboutus' element={<Aboutus/>}></Route>
-
+         <Route path="/verify" element={<VerifyPage/>}></Route>
+         <Route path='/myorder' element={<MyOrders/>}></Route>
       </Routes>
       
    
