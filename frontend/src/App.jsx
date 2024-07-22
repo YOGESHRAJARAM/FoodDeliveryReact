@@ -11,6 +11,7 @@ import Terms from './pages/policyPage/Terms'
 import Aboutus from './pages/policyPage/Aboutus'
 import VerifyPage from './pages/Verifypage/VerifyPage'
 import MyOrders from './pages/MyOrders/MyOrders'
+import "./App.css"
 
 
 

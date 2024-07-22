@@ -14,10 +14,7 @@ a{
   text-decoration: none;
   color: inherit;
 }
-.App{
-  margin: auto;
-  width: 80%;
-}
+
 @keyframes fadein {
   0%{
     opacity: 0;

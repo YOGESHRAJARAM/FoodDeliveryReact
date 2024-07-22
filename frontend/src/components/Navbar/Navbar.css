@@ -1,7 +1,7 @@
 .navbar{
     display: flex;
     justify-content: space-between;
-    padding: 20px 0px;
+    padding: 20px 80px;
     align-items: center;
 }
 .navbar .logo{
@@ -127,5 +127,8 @@
 @media(max-width:750px){
    .navbar .navbar-menu{
       display: none;
+    }
+    .navbar{
+       padding: 20px 20px;
     }
 }
