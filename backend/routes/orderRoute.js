@@ -26,7 +26,7 @@ orderRouter.post("/validate",async(req,res)=>{
        paymentId:razorpay_payment_id,
     })
     await orderModel.findOneAndUpdate({pay_id:razorpay_order_id},{payment: true});
-    await orderModel.deleteMany({payment: false});
+   //  await orderModel.deleteMany({payment: false});
  
   })
 

@@ -2,10 +2,12 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    padding: 10px 150px;
 }
 .explore-menu h1{
     color: #262626;
     font-weight: 500;
+    font-size: 4rem;
 }
 
 .explore-menu-text{
@@ -54,7 +56,75 @@
         max-width: 100%;
         font-size: 14px;
     }
+    .explore-menu{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 10px 80px;
+    }
+    .explore-menu h1{
+        color: #262626;
+        font-weight: 500;
+        font-size: 2.9rem;
+    }
     /* .explore-menu-list::-webkit-scrollbar{
     display: none;
 } */
+}
+@media(max-width:850px){
+    .explore-menu{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 10px 80px;
+    }
+    .explore-menu h1{
+        color: #262626;
+        font-weight: 500;
+        font-size: 2.5rem;
+    }
+}
+@media(max-width:750px){
+    .explore-menu{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 10px 60px;
+    }
+    .explore-menu h1{
+        color: #262626;
+        font-weight: 500;
+        font-size: 2rem;
+    }
+}
+@media(max-width:650px){
+    .explore-menu{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 10px 50px;
+    }
+    .explore-menu h1{
+        color: #262626;
+        font-weight: 500;
+        font-size: 1.5rem;
+    }
+}
+@media(max-width:450px){
+    .explore-menu{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 10px 15px;
+    }
+    .explore-menu-text{
+        max-width: 100%;
+        font-size: 12px;
+       
+    }
+    .explore-menu h1{
+        color: #262626;
+        font-weight: 500;
+        font-size: 1.4rem;
+    }
 }

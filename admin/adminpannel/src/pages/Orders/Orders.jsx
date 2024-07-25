@@ -20,7 +20,7 @@ const Orders = ({ url }) => {
     try {
       const response = await axios.get(url + "/api/order/list");
       if (response.data.success) {
-          setOrders(response.data.data.slice().reverse());
+          setOrders(response.data.data);
   
       } else {
         console.error("Error fetching orders:", response.data); // Log error
@@ -31,7 +31,7 @@ const Orders = ({ url }) => {
       // Handle error (e.g., display generic error message)
     }
   };
-  console.log(orders); 
+  // console.log(orders); 
   const statusHandler = async (event, orderId) => {
     try {
       const response = await axios.post(url + "/api/order/status", {
@@ -51,7 +51,7 @@ const Orders = ({ url }) => {
   };
 
   useEffect(() => {
-    const intervalId = setInterval(fetchAllOrders, 10000); // Fetch orders every 10 seconds
+    const intervalId = setInterval(fetchAllOrders, 2000); // Fetch orders every 10 seconds
     return () => clearInterval(intervalId);
   }, []);
 
@@ -63,9 +63,9 @@ const Orders = ({ url }) => {
 
     const latestOrderId = orders[orders.length - 1]._id;
     const latestOrderStatus = orders[orders.length -1].status;
-    console.log("Latest Order ID:", latestOrderId); // Log latest order ID
-    console.log("Previous ID:", previousId); // Log previous ID
-    console.log(latestOrderStatus)
+    // console.log("Latest Order ID:", latestOrderId); // Log latest order ID
+    // console.log("Previous ID:", previousId); // Log previous ID
+    // console.log(latestOrderStatus)
    
 
     if (latestOrderId !== previousId) {
@@ -81,14 +81,14 @@ const Orders = ({ url }) => {
   
   }, [orders, previousId]);
 
-  // 
+  let reversorder = orders.slice().reverse()
   return (
 
     <div className="order add">
      
       <h3>Order Page</h3>
       <div className="order-list">
-        {orders.map((order,index)=>(
+        {reversorder.map((order,index)=>(
           <div key={index} style={order.status==="Delivered" ?{backgroundColor:'#CCCCCC'} : order.status==="packed ready for shiping"?{backgroundColor:"#F6FB7A"}:order.status==="Food Processing"?{backgroundColor:"#88D66C"}:order.status==="Out for delivery"?{backgroundColor: "#B4E380"}:{backgroundColor:"white"}} className="order-item">
              <img src={assets.parcel_icon} alt=''/>
              <p>{order._id}</p>

@@ -107,6 +107,7 @@ const PlaceOrder = () => {
            if(jsonRes.msg == "success"){
             alert("Payment successfull"),
             navigate("/myorder")
+            window.location.reload();
           }else{
             alert("failed")
             navigate("/")
