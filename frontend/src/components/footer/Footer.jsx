@@ -9,7 +9,7 @@ const Footer = () => {
     <div className="footer" id='footer'>
         <div className="footer-content">
             <div className="footer-content-left">
-                <img src={assets.logo} alt='image'/>
+                <img style={{maxWidth:200}} src={assets.logo} alt='image'/>
                 <p>Welcome to your one-stop shop for all things tomato! Whether you're a seasoned chef or a home cook looking for inspiration, this website is your guide to exploring the versatility and vibrancy of this amazing foods</p>
                  <div className="footer-social-icons">
                     <img src={assets.facebook_icon} alt=''/>

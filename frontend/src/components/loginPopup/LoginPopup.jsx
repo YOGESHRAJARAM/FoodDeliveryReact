@@ -4,6 +4,11 @@ import { assets } from '../../assets/assets'
 import { useContext } from 'react'
 import { StoreContext } from '../../context/StoreContext'
 import axios from "axios"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
+
 
 const LoginPopup = ({Setshowlogin}) => {
 
@@ -12,7 +17,8 @@ const LoginPopup = ({Setshowlogin}) => {
     const [data,setData] = useState({
         name:"",
         email:"",
-        password:""
+        password:"",
+        OTP:""
     })
    
     const onChangeHandler = (event) => {
@@ -20,6 +26,21 @@ const LoginPopup = ({Setshowlogin}) => {
         const value = event.target.value
         setData(data=>({...data,[name]:value}))
 
+    }
+    const handleOtp= async()=>{
+      try {
+        const otpurl = url+'/api/OTP/'
+
+        const responce = await axios.post(otpurl,{email:data.email})
+        console.log(responce.data.token)
+         
+        toast("OTP send successfully")
+        
+      } catch (error) {
+        
+      }
+        
+      
     }
 
     const onLogin = async(event) =>{
@@ -56,6 +77,12 @@ const LoginPopup = ({Setshowlogin}) => {
                 {currState==="Login"?<></>:  <input type='text' name='name' onChange={onChangeHandler} value={data.name} placeholder='Your name' required/>}
                 <input type='email' name='email' onChange={onChangeHandler} value={data.email} placeholder='Your email' required/>
                 <input type='password' name='password' onChange={onChangeHandler} value={data.password} placeholder='password' required/>
+                {currState !== "Login"?  <div>
+                    <button type='button' onClick={handleOtp}>Sent OTP</button>
+                    <ToastContainer />   
+                    <input style={{marginTop:5}} type='password' name='OTP' onChange={onChangeHandler} value={data.OTP} placeholder='OTP' required/>
+                </div>:<></>}
+               
             </div>
             <button type='submit'>{currState==="Sign up"?"Create account":"Login"}</button>
             <div className="login-popup-condition">

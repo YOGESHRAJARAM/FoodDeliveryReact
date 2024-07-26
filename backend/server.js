@@ -6,6 +6,7 @@ import userRouter from './routes/userRoute.js'
 import 'dotenv/config'
 import cartRouter from './routes/cartRout.js'
 import orderRouter from './routes/orderRoute.js'
+import verifyrouter from './routes/verifyrouter.js'
 
 //app config
 const app = express()
@@ -25,10 +26,14 @@ app.use("/images",express.static('uploads'))
 app.use("/api/user",userRouter)
 app.use("/api/cart",cartRouter)
 app.use("/api/order",orderRouter)
+app.use("/api/OTP",verifyrouter)
+
 
 app.get("/",(req,res)=>{
     res.send("Api Connected")
 })
+
+
 
 
 app.listen(port,()=>{
