@@ -7,8 +7,12 @@ import nodemailer from "nodemailer"
 const generateOTP =async(req,res)=>{
     try {
         const {email} = req.body
+        if(!email){
+          console.log("nomail")
+          return
+        }
     console.log(email)
-    const OneTimePassword = Math.random().toString(36).slice(-8)
+    const OneTimePassword = Math.random().toString(36).slice(-6)
     console.log(OneTimePassword)
     const generateJWT =()=>{
         const secret = process.env.OTP_KEY
@@ -58,7 +62,7 @@ const generateOTP =async(req,res)=>{
         
     } catch (error) {
         
-
+       console.log(error)
 
     }
     
@@ -70,12 +74,19 @@ const verifyOTP = async(req,res)=>{
  try {
     // const{OTP} = req.body
     const {OTPtoken} = req.body
+    const{OTP} = req.body
     const secretKey = process.env.OTP_KEY
     // res.json(`this is ${OTP} and token is ${OTPtoken}`)
 
         const decoded = jwt.verify(OTPtoken,secretKey);
         console.log(decoded);
-        res.json(decoded) // Access payload data
+        // res.json(decoded)
+        if(decoded.OTP == OTP){
+             res.json({message:true})
+        }
+        else{
+          res.json({message:false})
+        } // Access payload data
       
     
  } catch (error) {

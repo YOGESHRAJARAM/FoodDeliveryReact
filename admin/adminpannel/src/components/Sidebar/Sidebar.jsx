@@ -18,6 +18,10 @@ const Sidebar = () => {
                 <img src={assets.order_icon} alt=""/>
                 <p>Orders</p>
             </NavLink>
+            <NavLink to='/' className="sidebar-option">
+                <img style={{maxWidth:30}} src={assets.setting} alt=""/>
+                <p>Setting</p>
+            </NavLink>
         </div>
 
     </div>

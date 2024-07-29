@@ -3,6 +3,11 @@
     justify-content: space-between;
     align-items: center;
     padding: 8px 4%;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    background-color: rgb(255, 255, 255);
+    border-bottom: solid rgba(66, 64, 64, 0.9) 1px;
 }
 .navbar .logo{
     width: max(10%,80px);

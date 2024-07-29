@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './LoginPopup.css'
 import { assets } from '../../assets/assets'
 import { useContext } from 'react'
@@ -20,6 +20,9 @@ const LoginPopup = ({Setshowlogin}) => {
         password:"",
         OTP:""
     })
+    const [otpbtn,setOtpBtn] = useState(true)
+    const [otptoken,setotptoken] = useState("")
+    const [otpVerifyed,Setoptverifyed] = useState(false)
    
     const onChangeHandler = (event) => {
         const name = event.target.name
@@ -29,19 +32,42 @@ const LoginPopup = ({Setshowlogin}) => {
     }
     const handleOtp= async()=>{
       try {
+        if(!data.email){
+            toast("Please Enter Vaild Mail Address")
+            return
+        }
+        
         const otpurl = url+'/api/OTP/'
-
         const responce = await axios.post(otpurl,{email:data.email})
         console.log(responce.data.token)
-         
+        setotptoken(responce.data.token) 
         toast("OTP send successfully")
-        
       } catch (error) {
         
       }
         
       
     }
+   const handlotpverify = async()=>{
+        try{
+            const responce = await axios.post(url+"/api/OTP/verify",{
+                OTP:data.OTP,
+                OTPtoken:otptoken
+              })
+              console.log(responce.data.message)
+              if(responce.data.message){
+              
+                Setoptverifyed(true)
+              }
+              else{
+                toast("Wrond Otp")
+              }
+        }
+        catch(error){
+
+        }
+
+   }
 
     const onLogin = async(event) =>{
         event.preventDefault()
@@ -49,6 +75,10 @@ const LoginPopup = ({Setshowlogin}) => {
         if(currState === "Login"){
             newUrl += "/api/user/login"
         }else{
+            if(!otpVerifyed){
+                alert("verify otp first")
+                return
+            }
             newUrl += "/api/user/register"
         }
 
@@ -65,6 +95,15 @@ const LoginPopup = ({Setshowlogin}) => {
       
 
     }
+    useEffect(()=>{
+        if(data.OTP.length <= 0){
+            setOtpBtn(true)
+        }
+        else{
+            setOtpBtn(false)
+        }
+      
+    },[data.OTP])
 
   return (
     <div id="login-popup">
@@ -75,12 +114,18 @@ const LoginPopup = ({Setshowlogin}) => {
             </div>
             <div className="login-popup-inputs">
                 {currState==="Login"?<></>:  <input type='text' name='name' onChange={onChangeHandler} value={data.name} placeholder='Your name' required/>}
-                <input type='email' name='email' onChange={onChangeHandler} value={data.email} placeholder='Your email' required/>
+                <input type='email' disabled={otpVerifyed} name='email' onChange={onChangeHandler} value={data.email} placeholder='Your email' required/>
                 <input type='password' name='password' onChange={onChangeHandler} value={data.password} placeholder='password' required/>
-                {currState !== "Login"?  <div>
-                    <button type='button' onClick={handleOtp}>Sent OTP</button>
-                    <ToastContainer />   
-                    <input style={{marginTop:5}} type='password' name='OTP' onChange={onChangeHandler} value={data.OTP} placeholder='OTP' required/>
+                {currState !== "Login"? <div>{otpVerifyed?<div>
+               <span style={{display:'flex',gap:2,marginLeft:10}}>OTP Verifyed Successfully  <img width={20} src={assets.verifyed} alt='Success'/></span>
+
+                </div>:<div>
+                {otpbtn?<button type='button' onClick={handleOtp}>Sent OTP</button>:<button type='button' onClick={handlotpverify}>Verify</button>}
+                
+                <ToastContainer />   
+                    <input  style={{marginTop:5}} type='password' name='OTP' onChange={onChangeHandler} value={data.OTP} placeholder='OTP' required/>
+                    </div>}
+                  
                 </div>:<></>}
                
             </div>
@@ -93,8 +138,6 @@ const LoginPopup = ({Setshowlogin}) => {
             ?<p>Create a new account? <span onClick={()=>setCurrState("Sign up")}>Click here</span></p>
             :<p>Already have an account <span onClick={()=>setCurrState("Login")}>Login here</span></p>
             }
-            
-        
         </form>
     </div>
   )

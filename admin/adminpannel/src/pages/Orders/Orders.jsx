@@ -124,6 +124,8 @@ const Orders = ({ url }) => {
                 <option value="Out for delivery">Out for delivery</option>
                 <option value="Delivered">Delivered</option>
              </select>
+             {order.status == "packed ready for shiping" ?<button>Print</button>:<></>}
+             {order.status == "Food Processing"?<button>Reject</button>:<></>}
           </div>
         ))}
       </div>
