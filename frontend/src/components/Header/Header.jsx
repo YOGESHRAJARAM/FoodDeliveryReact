@@ -4,14 +4,14 @@ import Spline from '@splinetool/react-spline';
 import { useRef } from 'react';
 
 const Header = () => {
-  const cube = useRef()
+  const splineRef = useRef(null)
   function onLoad(Spline){
-    const obj = Spline.findObjectByName('cube')
-    cube.current=obj;
+    const obj = Spline.findObjectByName('splineRef')
+    splineRef.current=obj;
   }
   function moveObj(){
     console.log(cube.current);
-    cube.current.position.x+=10;
+    splineRef.current.position.x+=10;
   }
   return (
     <div className="header">
@@ -21,7 +21,7 @@ const Header = () => {
             {/* <button>View Menu</button> */}
   
         </div>
-        {/* <Spline  ref={cube} style={{width:"88%",borderRadius:10}} scene="https://prod.spline.design/qYoIDeWnxTjFLV4N/scene.splinecode"  onLoad={onLoad} /> */}
+        <Spline  style={{width:"88%",borderRadius:10}} scene="https://prod.spline.design/qYoIDeWnxTjFLV4N/scene.splinecode"  ref={splineRef}  onLoad={onLoad} onClick={()=>(moveObj)} />
       
   
        
