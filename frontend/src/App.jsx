@@ -12,15 +12,18 @@ import Aboutus from './pages/policyPage/Aboutus'
 import VerifyPage from './pages/Verifypage/VerifyPage'
 import MyOrders from './pages/MyOrders/MyOrders'
 import "./App.css"
+import ForgetPassword from './components/Forgetpassword/ForgetPassword'
 
 
 
 const App = () => {
 
   const [showlogin,setshowlogin] = useState(false)
+  const [showForgetpassword,SetShowForgetPassword] = useState(false)
   return (
     <div className='App'>
-      {showlogin ?<LoginPopup Setshowlogin={setshowlogin}/>:<></>}
+      {showlogin ?<LoginPopup Setshowlogin={setshowlogin} SetShowForgetPassword={SetShowForgetPassword}/>:<></>}
+      {showForgetpassword ?<ForgetPassword SetShowForgetPassword={SetShowForgetPassword} Setshowlogin={setshowlogin}/>:<></>}
       <Navbar Setshowlogin={setshowlogin}/>
       <Routes>
          <Route path='/' element={<Home/>}></Route>
