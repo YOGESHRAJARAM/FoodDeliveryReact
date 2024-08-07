@@ -2,6 +2,7 @@ import React from 'react'
 import './Header.css'
 import Spline from '@splinetool/react-spline';
 import { useRef } from 'react';
+import { assets } from '../../assets/assets';
 
 const Header = () => {
   const splineRef = useRef(null)
@@ -21,8 +22,9 @@ const Header = () => {
             {/* <button>View Menu</button> */}
   
         </div>
-        <Spline  style={{width:"88%",borderRadius:10}} scene="https://prod.spline.design/qYoIDeWnxTjFLV4N/scene.splinecode"  ref={splineRef}  onLoad={onLoad} onClick={()=>(moveObj)} />
-      
+        <img src={assets.headersweet}/>
+       {/*<Spline  style={{width:"88%",borderRadius:10}} scene="https://prod.spline.design/qYoIDeWnxTjFLV4N/scene.splinecode"  ref={splineRef}  onLoad={onLoad} onClick={()=>(moveObj)} />
+      */} 
   
        
     </div>

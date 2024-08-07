@@ -44,7 +44,7 @@ const generateOTP = async (req, res) => {
       service: "gmail",
       auth: {
         user: "bablusoftware12@gmail.com",
-        pass: "yobg nmjt xrpw bdzd",
+        pass: "humo wwgx proq tgas",
       },
     });
     const message = {
