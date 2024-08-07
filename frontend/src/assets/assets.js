@@ -60,7 +60,7 @@ import bag_icon from './bag_icon.png'
 import logout_icon from './logout_icon.png'
 import parcel_icon from './parcel_icon.png'
 import verifyed from './verifyed.png'
-import headersweet from './headersweet.jpg'
+import headersweet from './20426.jpg'
 
 export const assets = {
     logo,
