@@ -61,6 +61,7 @@ import logout_icon from './logout_icon.png'
 import parcel_icon from './parcel_icon.png'
 import verifyed from './verifyed.png'
 import headersweet from './20426.jpg'
+import handpointer from "./hand.gif"
 
 export const assets = {
     logo,
@@ -83,7 +84,8 @@ export const assets = {
     bag_icon,
     parcel_icon,
     verifyed,
-    headersweet
+    headersweet,
+    handpointer
 }
 
 export const menu_list = [

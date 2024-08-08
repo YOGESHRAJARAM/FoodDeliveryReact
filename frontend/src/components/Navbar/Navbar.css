@@ -3,21 +3,32 @@
     justify-content: space-between;
     padding: 20px 80px;
     align-items: center;
+    background-color: rgba(255, 0, 0, 0);
+}
+.profile_bacg{
+    background-color:rgba(0, 0, 0, 0.163);
+    padding: 10px 5px;
+   border-radius: 10px;
+    font-size: 0.7rem;
 }
 .navbar .logo{
-    width: 150px;
+    width: 130px;
 }
 .navbar .navbar-menu{
     display: flex;
     list-style: none;
     gap: 20px;
-    color: #49557e;
-    font-size: 18px;
+    color: #040404;
+    font-size: 1vw;
+}
+.basketimage{
+    width: 40px;
+ 
 }
 .navbar-right{
     display: flex;
     align-items: center;
-    gap: 40px;
+    gap: 10px;
 }
 .navbar button{
     background-color: transparent;
@@ -84,14 +95,20 @@
 .nav-profile-dropdown li:hover{
     color: tomato;
 }
+@media (max-width:1400px) {
+    .navbar .navbar-menu{
+        gap: 20px;
+        font-size: 1.4vw;
+    }
+}
 
 @media(max-width:1050px){
     .navbar .logo{
         width: 140px;
     }
-    .navbar-menu{
+   .navbar .navbar-menu{
         gap: 20px;
-        font-size: 17px;
+        font-size: 1.8vw;
 
     }
     .navbar-right{
@@ -125,10 +142,13 @@
     }
 }
 @media(max-width:750px){
-   .navbar .navbar-menu{
-      display: none;
-    }
+  
     .navbar{
        padding: 20px 20px;
     }
+}
+@media(max-width:550px){
+    .navbar .navbar-menu{
+        display: none;
+      }
 }

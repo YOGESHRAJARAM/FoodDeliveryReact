@@ -2,9 +2,12 @@ import React from 'react'
 import './Footer.css'
 import {assets} from '../../assets/assets'
 import {Link} from 'react-router-dom'
+import { useContext } from 'react'
+import { StoreContext } from '../../context/StoreContext'
 
 
 const Footer = () => {
+    const {contacthilight} = useContext(StoreContext)
   return (
     <div className="footer" id='footer'>
         <div className="footer-content">
@@ -31,7 +34,7 @@ const Footer = () => {
             <div className="footer-content-right">
                 <h2>Contact Us</h2>
                 <ul>
-                    <li>+91 9080194557</li>
+                    <li style={{display:'flex', alignItems:'center'}}>+91 9080194557{contacthilight ?<img width={50} src={assets.handpointer}/>:<></>}</li>
                     <li><a href="mailto:cherrylandtec@gmail.com">cherrylandtec@gmail.com</a></li>
                 </ul>
             </div>

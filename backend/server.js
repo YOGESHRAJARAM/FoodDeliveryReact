@@ -40,7 +40,7 @@ app.listen(port,()=>{
     console.log(`server running on http://localhost:${port}`)
 })
 
-//mongodb+srv://greatstack:1182528@cluster0.shzj9fi.mongodb.net/? retryWrites=true&w=majority&appName=Cluster0
+
 
 
 app.get("/test/",(req,res)=>{

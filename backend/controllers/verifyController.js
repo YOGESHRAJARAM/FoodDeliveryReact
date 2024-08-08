@@ -137,5 +137,25 @@ const ResetPassword = async (req,res)=>{
     }
   
 }
+const verifyExpire =async (req,res)=>{
+    const {token}  = req.body
+    const secret = process.env.JWT_SECRET
+    const date = new Date();
+    let time = date.getTime()/1000
+    const nowTime = parseInt(time)
+   
 
-export { generateOTP, verifyOTP,ResetPassword};
+ 
+    try{
+      const decodedtoken = jwt.verify(token,secret) 
+      const exptime = parseInt(decodedtoken.exp) 
+      if(exptime > nowTime){
+        return res.json({success:true,message:"token on live"})
+      }
+    }catch(error){
+      res.json({success:false,message:"token expired"})
+    }
+   
+}
+
+export { generateOTP, verifyOTP,ResetPassword,verifyExpire};
